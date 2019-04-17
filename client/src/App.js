@@ -1,15 +1,6 @@
 import React, { Component } from "react";
 import AppNavbar from "./components/AppNavbar";
-import ShoppingList from "./components/ShoppingList";
-import ItemModal from "./components/ItemModal";
-import { Container } from "reactstrap";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  withRouter
-} from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -17,7 +8,9 @@ import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/authActions";
-import StopSelect from "./components/StopSelect";
+import Home from "./components/Home";
+import MapContainer from "./containers/MapContainer";
+import ManageCourses from "./components/ManageCourses (1)";
 
 class App extends Component {
   componentDidMount() {
@@ -26,14 +19,13 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="App">
-          <AppNavbar />
-          <Container>
-            <StopSelect />
-            <ItemModal />
-            <ShoppingList />
-          </Container>
-        </div>
+        <Router>
+          <div className="App">
+            <AppNavbar />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/map" component={MapContainer} />
+          </div>
+        </Router>
       </Provider>
     );
   }

@@ -13,11 +13,14 @@ class StopSelect extends Component {
     this.handleSelect = this.handleSelect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  static propTypes = {
+    getStops: PropTypes.func,
+    setStop: PropTypes.func
+  };
+
   componentDidMount() {
     this.props.getStops();
-    console.log(this.props.prefs);
-    console.log(this.props.isAuthenticated);
-    console.log(this.props.user);
   }
 
   handleSelect(event) {

@@ -68,4 +68,13 @@ router.post("/stop", auth, (req, res) => {
     .catch(err => res.status(500).json({ msg: "Failed to update stop" }));
 });
 
+// @route  GET api/users/stop
+// @desc   Get user stop information
+//@access  Private
+router.get("/stop", auth, (req, res) => {
+  User.findById(req.user.id).then(user => {
+    console.log(user.preferences.stop);
+  });
+});
+
 module.exports = router;

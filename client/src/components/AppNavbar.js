@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
+import logo from "../img/bus.png";
 import {
   Collapse,
   Navbar,
@@ -6,6 +8,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
+  NavLink,
   Container
 } from "reactstrap";
 import { connect } from "react-redux";
@@ -35,12 +38,17 @@ class AppNavbar extends Component {
     const authLinks = (
       <Fragment>
         <NavItem>
-          <span className="navbar-text mr-3">
-            <strong>{user ? `Welcome ${user.name}` : ""}</strong>
-          </span>
+          <Link to="/map">
+            <NavLink>Map</NavLink>
+          </Link>
         </NavItem>
         <NavItem>
           <Logout />
+        </NavItem>
+        <NavItem>
+          <span className="navbar-text mr-3">
+            <strong>{user ? `${user.name}` : ""}</strong>
+          </span>
         </NavItem>
       </Fragment>
     );
@@ -57,9 +65,16 @@ class AppNavbar extends Component {
     );
     return (
       <div>
-        <Navbar color="dark" dark expand="sm" className="mb-5">
+        <Navbar color="light" light expand="sm" className="mb-5">
           <Container>
-            <NavbarBrand href="/">shuttle.me</NavbarBrand>
+            <NavbarBrand href="/">
+              <img
+                src={logo}
+                style={{ width: "25px", height: "auto" }}
+                alt="Logo"
+              />{" "}
+              shuttle.me
+            </NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>

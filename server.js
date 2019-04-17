@@ -1,6 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const path = require("path");
 const config = require("config");
 
 const app = express();
@@ -26,6 +25,7 @@ app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/doublemap/stops", require("./routes/api/doublemap/stops"));
 app.use("/api/doublemap/buses", require("./routes/api/doublemap/buses"));
+app.use("/api/geojson/route", require("./routes/api/geojson/route"));
 
 const port = process.env.PORT || 5000;
 
