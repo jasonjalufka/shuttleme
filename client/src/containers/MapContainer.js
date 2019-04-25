@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getRouteGeoJson } from "../actions/geojsonActions";
+import {
+  getRouteGeoJson,
+  getStopGeoJson,
+  getBusGeoJson
+} from "../actions/geojsonActions";
 import Map from "../components/Map";
-import MapOptions from "../components/MapOptions";
 
 class MapContainer extends Component {
   constructor(props) {
@@ -56,12 +59,22 @@ class MapContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.getRouteGeoJson("txstate");
+    this.props.getRouteGeoJson(this.state.selectedUniversity);
+    this.props.getStopGeoJson(this.state.selectedUniversity);
+    this.props.getBusGeoJson(this.state.selectedUniversity);
+    this.interval = setInterval(() => {
+      this.props.getBusGeoJson(this.state.selectedUniversity);
+    }, 5000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   handleSelectUniversity = event => {
     console.log(event.target.value);
     this.props.getRouteGeoJson(event.target.value);
+    this.props.getStopGeoJson(this.state.selectedUniversity);
   };
 
   handleSubmit = event => {
@@ -75,21 +88,12 @@ class MapContainer extends Component {
 
   render() {
     return (
-      this.props.geojson && (
+      this.props.routegeojson && (
         <>
           <Map
-            className="map left"
-            routeGeoJson={this.props.geojson}
-            width={800}
-            height={600}
-          />
-          <MapOptions
-            className="map-options right"
-            handleChange={this.handleSelectUniversity}
-            stop={this.state.selectedStop}
-            route={this.state.selectedRoute}
-            university={this.state.selectedUniversity}
-            list={this.state.universityList}
+            routes={this.props.routegeojson}
+            stops={this.props.stopgeojson}
+            buses={this.props.busgeojson}
           />
         </>
       )
@@ -100,10 +104,12 @@ class MapContainer extends Component {
 const mapStateToProps = state => ({
   auth: state.auth,
   isAuthenticated: state.auth.isAuthenticated,
-  geojson: state.geojson.routegeojson
+  routegeojson: state.geojson.routegeojson,
+  stopgeojson: state.geojson.stopgeojson,
+  busgeojson: state.geojson.busgeojson
 });
 
 export default connect(
   mapStateToProps,
-  { getRouteGeoJson }
+  { getRouteGeoJson, getStopGeoJson, getBusGeoJson }
 )(MapContainer);

@@ -10,7 +10,7 @@ import store from "./store";
 import { loadUser } from "./actions/authActions";
 import Home from "./components/Home";
 import MapContainer from "./containers/MapContainer";
-import ManageCourses from "./components/ManageCourses (1)";
+import DashboardContainer from "./containers/DashboardContainer";
 
 class App extends Component {
   componentDidMount() {
@@ -24,6 +24,7 @@ class App extends Component {
             <AppNavbar />
             <Route exact path="/" component={Home} />
             <Route exact path="/map" component={MapContainer} />
+            <Route exact path="/dashboard" component={DashboardContainer} />
           </div>
         </Router>
       </Provider>

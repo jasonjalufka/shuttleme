@@ -17,14 +17,14 @@ export const getStops = () => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const getUserStop = () => (dispatch, setState) => {
+export const getUserStop = () => (dispatch, getState) => {
   axios
-    .get("/api/users/stop", tokenConfig(setState))
+    .get("/api/users/stop", tokenConfig(getState))
     .then(res => dispatch({ type: GET_USER_STOP, payload: res.data }));
 };
 
-export const setStop = stopChoice => (dispatch, setState) => {
-  axios.post("/api/users/stop", stopChoice, tokenConfig(setState)).then(res =>
+export const setStop = stopChoice => (dispatch, getState) => {
+  axios.post("/api/users/stop", stopChoice, tokenConfig(getState)).then(res =>
     dispatch({
       type: SET_STOP,
       payload: stopChoice

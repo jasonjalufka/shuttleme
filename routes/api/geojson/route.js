@@ -41,7 +41,7 @@ router.get("/:universityID", (req, res) => {
             id: route.id,
             name: route.name,
             short_name: route.short_name,
-            color: route.color,
+            color: "#" + route.color,
             start_time: route.start_time,
             end_time: route.end_time,
             schedule_url: route.schedule_url,
@@ -49,7 +49,7 @@ router.get("/:universityID", (req, res) => {
           }
         });
       });
-      console.log("geojson from server: ", geojson);
+      console.log("route geojson from server: ", geojson);
       res.json(geojson);
     })
     .catch(err => {

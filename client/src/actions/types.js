@@ -23,4 +23,5 @@ export const GET_BUSES = "GET_BUSES";
 export const GET_BUS = "GET_BUS";
 
 export const GET_ROUTE_GEOJSON = "GET_ROUTE_GEOJSON";
+export const GET_STOP_GEOJSON = "GET_STOP_GEOJSON";
 export const GET_BUS_GEOJSON = " GET_BUS_GEOJSON";

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from "../img/bus.png";
 import {
@@ -36,11 +36,9 @@ class AppNavbar extends Component {
     const { isAuthenticated, user } = this.props.auth;
 
     const authLinks = (
-      <Fragment>
+      <>
         <NavItem>
-          <Link to="/map">
-            <NavLink>Map</NavLink>
-          </Link>
+          <Link to="/map">Map</Link>
         </NavItem>
         <NavItem>
           <Logout />
@@ -50,18 +48,18 @@ class AppNavbar extends Component {
             <strong>{user ? `${user.name}` : ""}</strong>
           </span>
         </NavItem>
-      </Fragment>
+      </>
     );
 
     const guestLinks = (
-      <Fragment>
+      <>
         <NavItem>
           <RegisterModal />
         </NavItem>
         <NavItem>
           <LoginModal />
         </NavItem>
-      </Fragment>
+      </>
     );
     return (
       <div>
