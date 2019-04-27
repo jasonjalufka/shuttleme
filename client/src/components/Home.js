@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { HomeLayout } from "../styles/HomeStyles";
 import StopInfo from "../containers/StopInfo";
-import girl from "../img/girl.svg";
+import Girl from "./Girl";
+import Button from "../styles/Button";
 
 class Home extends Component {
   render() {
@@ -13,9 +14,17 @@ class Home extends Component {
               <h1>shuttle.me</h1>
               <p>never miss the bus again</p>
             </div>
+            <div>
+              <ul>
+                <li>Interactive map</li>
+                <li>More than 20 universities</li>
+                <li>Real time updates</li>
+              </ul>
+            </div>
+            <Button id="get-started">Get Started</Button>
           </div>
           <div className="right">
-            <img src={girl} alt="Girl" />
+            <Girl />
           </div>
         </HomeLayout>
         <StopInfo />

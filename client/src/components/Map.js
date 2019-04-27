@@ -18,7 +18,7 @@ class Map extends Component {
   // }
 
   componentDidUpdate(prevProps) {
-    if (this.props.buses !== prevProps.buses) {
+    if (this.props.buses !== prevProps.buses && this.map) {
       this.updateBusLayer();
     }
   }

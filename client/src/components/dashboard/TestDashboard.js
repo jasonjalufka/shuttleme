@@ -1,8 +1,6 @@
 import React from "react";
 import ProgressBar from "./ProgressBar";
 import styled from "styled-components/macro";
-import Dropdown from "./Dropdown";
-import sun from "../../img/sun.svg";
 
 export const StyledDashboard = styled.div`
   display: flex;

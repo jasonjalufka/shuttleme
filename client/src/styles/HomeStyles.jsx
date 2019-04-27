@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import theme from "./theme";
 import "../components/Home";
 
 // font-family: 'Varela Round', sans-serif;
@@ -18,9 +19,14 @@ export const HomeLayout = styled.div`
     grid-column-start: 1;
     grid-column-end: 4;
     grid-row-start: 1;
-    grid-row-end: 2;
+    grid-row-end: 3;
     justify-self: center;
     align-self: center;
+    max-width: 450px;
+
+    #get-started {
+      width: 100%;
+    }
 
     h1 {
       font-family: "Varela Round", sans-serif;
@@ -32,26 +38,23 @@ export const HomeLayout = styled.div`
       display: block;
       text-align: center;
       font-style: italic;
-      background-color: #fab1a0;
+      background-color: ${theme.colors.turquoise};
+      color: black;
       transform: skew(15deg, 0);
       border-radius: 1px;
+    }
+
+    li {
+      font-family: "Open Sans", sans-serif;
     }
   }
 
   .right {
-    color: "blue";
-    grid-column-start: 4;
+    grid-column-start: 3;
     grid-column-end: 6;
     grid-row-start: 1;
     grid-row-end: 3;
-    justify-self: start;
-    width: 75%;
-    height: 100%;
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-    padding-right: 30px;
+    justify-self: center;
+    padding-top: 4em;
   }
 `;

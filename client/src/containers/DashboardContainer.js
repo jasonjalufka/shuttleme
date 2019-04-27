@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import produce from "immer";
-import { connect } from "react-redux";
 import TestDashboard from "../components/dashboard/TestDashboard";
 
 class DashboardContainer extends Component {

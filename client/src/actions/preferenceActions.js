@@ -1,7 +1,7 @@
 import axios from "axios";
 import { SET_STOP, GET_STOPS, GET_USER_STOP, STOPS_LOADING } from "./types";
 import { tokenConfig } from "../actions/authActions";
-import { returnErrors } from "../actions/errorActions";
+// import { returnErrors } from "../actions/errorActions";
 
 export const getStops = () => dispatch => {
   dispatch({ type: STOPS_LOADING });

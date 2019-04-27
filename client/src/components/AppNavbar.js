@@ -38,7 +38,14 @@ class AppNavbar extends Component {
     const authLinks = (
       <>
         <NavItem>
-          <Link to="/map">Map</Link>
+          <NavLink tag={Link} to="/map">
+            Map
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink tag={Link} to="/dashboard">
+            Dashboard
+          </NavLink>
         </NavItem>
         <NavItem>
           <Logout />
@@ -68,10 +75,15 @@ class AppNavbar extends Component {
             <NavbarBrand href="/">
               <img
                 src={logo}
-                style={{ width: "25px", height: "auto" }}
+                style={{
+                  width: "50px",
+                  height: "auto",
+                  "background-color": "#c5eff7",
+                  "border-radius": "20%",
+                  padding: "8px"
+                }}
                 alt="Logo"
-              />{" "}
-              shuttle.me
+              />
             </NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
