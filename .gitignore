@@ -44,3 +44,5 @@ config
 # Coveralls
 coverage
 .vscode
+npm-debug.log
+/*.env
