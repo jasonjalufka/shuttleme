@@ -1,3 +1,5 @@
+import GlobalStyle from "./GlobalStyle";
 import theme from "./theme";
+import media from "./media";
 
-export { theme };
+export { GlobalStyle, theme, media };

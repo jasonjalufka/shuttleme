@@ -11,6 +11,7 @@ import { loadUser } from "./actions/authActions";
 import Home from "./components/Home";
 import MapContainer from "./containers/MapContainer";
 import DashboardContainer from "./containers/DashboardContainer";
+import { GlobalStyle } from "./styles";
 
 class App extends Component {
   componentDidMount() {
@@ -19,6 +20,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
+        <GlobalStyle />
         <Router>
           <div className="App">
             <AppNavbar />

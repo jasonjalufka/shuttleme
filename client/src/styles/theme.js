@@ -4,7 +4,8 @@ const theme = {
     turquoise: "rgba(78, 205, 196, 1)",
     white: "rgba(255, 255, 255, 1)",
     red: "rgba(255, 107, 107, 1)",
-    gray: "#D1D1D1"
+    gray: "#D1D1D1",
+    highlight: "#ffff7e"
   },
 
   fonts: {
