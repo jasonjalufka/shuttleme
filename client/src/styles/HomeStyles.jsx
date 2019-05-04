@@ -20,7 +20,8 @@ export const HomeLayout = styled.div`
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-template-rows: 33% 33% 33%;
 
-  svg line {
+  svg line,
+  polyline {
     stroke-dasharray: 300;
     stroke-dashoffset: 600;
     animation: ${keyFrame} 6s linear infinite forwards;
