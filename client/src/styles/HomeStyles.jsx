@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled, { keyframes } from "styled-components/macro";
 import theme from "./theme";
 import "../components/Home";
 
@@ -6,6 +6,11 @@ import "../components/Home";
 // font-family: 'Open Sans', sans-serif;
 // color: #74b9ff; //blue
 // color: #ffeaa7 //yellow
+export const keyFrame = keyframes`
+    to {
+      stroke-dashoffset: 0;
+    }
+`;
 export const HomeLayout = styled.div`
   color: #222222;
   font-family: "Varela Round", sans-serif;
@@ -14,6 +19,12 @@ export const HomeLayout = styled.div`
   height: 100vh;
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-template-rows: 33% 33% 33%;
+
+  line {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 600;
+    animation: ${keyFrame} 6s linear infinite forwards;
+  }
 
   .left {
     grid-column-start: 1;
