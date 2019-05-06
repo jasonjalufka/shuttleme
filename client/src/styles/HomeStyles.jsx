@@ -1,72 +1,81 @@
 import styled, { keyframes } from "styled-components/macro";
 import theme from "./theme";
+import media from "./media";
 import "../components/Home";
 
 // font-family: 'Varela Round', sans-serif;
 // font-family: 'Open Sans', sans-serif;
 // color: #74b9ff; //blue
 // color: #ffeaa7 //yellow
-export const keyFrame = keyframes`
+export const lineAnimation = keyframes`
     to {
       stroke-dashoffset: 0;
     }
 `;
+
+// Layout using flexbox
 export const HomeLayout = styled.div`
   color: #222222;
   font-family: "Varela Round", sans-serif;
-  display: grid;
-  width: 100%;
-  height: 100vh;
-  grid-template-columns: 20% 20% 20% 20% 20%;
-  grid-template-rows: 33% 33% 33%;
+  min-height: 100vh;
 
-  svg line,
-  polyline {
+  h1 {
+    font-family: "Varela Round", sans-serif;
+    font-size: 3em;
+    margin: 0;
+  }
+
+  p {
+    display: block;
+    text-align: center;
+    font-style: italic;
+    background-color: ${theme.colors.turquoise};
+    color: black;
+    transform: skew(15deg, 0);
+    border-radius: 1px;
+  }
+
+  ul {
+    text-align: left;
+  }
+
+  li {
+    font-family: "Open Sans", sans-serif;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100vh;
+    justify-content: center;
+  }
+
+  .column {
+    flex-basis: 100%;
+    justify-content: center;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 20px;
+  }
+
+  .header-image {
+    display: none;
+  }
+
+  /* Desktop Styles > 1000px */
+  ${media.desktop`
+    .column {
+      flex: 1;
+    }
+    .header-image {
+      display: block;
+    }
+  `}
+  svg line,polyline {
     stroke-dasharray: 300;
     stroke-dashoffset: 600;
-    animation: ${keyFrame} 6s linear infinite forwards;
-  }
-
-  .left {
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 3;
-    justify-self: center;
-    align-self: center;
-    max-width: 450px;
-
-    #get-started {
-      width: 100%;
-    }
-
-    h1 {
-      font-family: "Varela Round", sans-serif;
-      font-size: 4em;
-      margin: 0;
-    }
-
-    p {
-      display: block;
-      text-align: center;
-      font-style: italic;
-      background-color: ${theme.colors.turquoise};
-      color: black;
-      transform: skew(15deg, 0);
-      border-radius: 1px;
-    }
-
-    li {
-      font-family: "Open Sans", sans-serif;
-    }
-  }
-
-  .right {
-    grid-column-start: 3;
-    grid-column-end: 6;
-    grid-row-start: 1;
-    grid-row-end: 3;
-    justify-self: center;
-    padding-top: 4em;
+    animation: ${lineAnimation} 6s linear infinite forwards;
   }
 `;

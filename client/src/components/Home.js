@@ -9,22 +9,22 @@ class Home extends Component {
     return (
       <>
         <HomeLayout>
-          <div className="left">
-            <div className="title">
-              <h1>shuttle.me</h1>
-              <p>never miss the bus again</p>
+          <div className="container">
+            <div className="row">
+              <div className="column">
+                <h1>shuttle.me</h1>
+                <p>never miss the bus again</p>
+                <ul>
+                  <li>Interactive map</li>
+                  <li>More than 20 universities</li>
+                  <li>Real time updates</li>
+                </ul>
+                <Button id="get-started">Get Started</Button>
+              </div>
+              <div className="column header-image">
+                <Girl />
+              </div>
             </div>
-            <div>
-              <ul>
-                <li>Interactive map</li>
-                <li>More than 20 universities</li>
-                <li>Real time updates</li>
-              </ul>
-            </div>
-            <Button id="get-started">Get Started</Button>
-          </div>
-          <div className="right">
-            <Girl />
           </div>
         </HomeLayout>
         <StopInfo />
