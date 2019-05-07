@@ -7,7 +7,6 @@ const axios = require("axios");
 // @desc   Get all dashboard
 // @access Public
 router.get("/:university", (req, res) => {
-  console.log("I've been hit!");
   let stopData, routeData, busData;
 
   let getStops = () => {
@@ -63,7 +62,6 @@ const formatData = (routes, stops, buses) => {
         buses: buses
           .filter(bus => bus.route == route.id)
           .map(bus => {
-            console.log(route.name);
             return {
               id: bus.id,
               name: bus.name,
@@ -91,9 +89,6 @@ const calculatePercentage = (lat, lon, path, lastStop) => {
   let stopIndex = findIndexInPath(lastStop.lat, lastStop.lon, path);
   let busIndex = findIndexInPath(lat, lon, path.slice(stopIndex));
 
-  console.log("stopIndex: ", stopIndex);
-  console.log("busIndex: ", busIndex + stopIndex);
-
   let percentage = ((busIndex + stopIndex) / path.length) * 100;
   return percentage.toFixed();
 };
@@ -118,9 +113,6 @@ const findIndexInPath = (lat, lon, path) => {
   });
 
   let index = path.findIndex((current, index) => {
-    if (current == smallestDist.lat && path[index + 1] == smallestDist.lon) {
-      console.log("Found a point in the route");
-    }
     return current == smallestDist.lat && path[index + 1] == smallestDist.lon;
   });
 

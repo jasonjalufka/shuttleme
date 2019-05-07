@@ -10,7 +10,6 @@ router.get("/", (req, res) => {
   axios
     .get("http://txstate.doublemap.com/map/v2/stops")
     .then(stops => {
-      console.log("Fetching stop data from doublemap...");
       let stopData = stops.data.map(stop => {
         return {
           id: stop.id,

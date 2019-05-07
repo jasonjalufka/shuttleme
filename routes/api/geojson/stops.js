@@ -30,10 +30,6 @@ router.get("/:universityID", (req, res) => {
           type: "FeatureCollection",
           features: []
         };
-        console.log(
-          "Fetching 123 stop data from doublemap, ex:",
-          stops.data[0]
-        );
 
         stops.data
           .filter(stop => activeStops.includes(stop.id))

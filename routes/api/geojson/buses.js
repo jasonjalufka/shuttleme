@@ -13,7 +13,6 @@ router.get("/:universityID", (req, res) => {
         type: "FeatureCollection",
         features: []
       };
-      console.log("Fetching bus data from doublemap, ex:", buses.data[0].name);
 
       buses.data.map(bus => {
         geojson.features.push({

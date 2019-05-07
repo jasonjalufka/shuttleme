@@ -25,8 +25,6 @@ router.get("/", (req, res) => {
   axios
     .get("http://txstate.doublemap.com/map/v2/buses")
     .then(buses => {
-      console.log("Fetching buses data from doublemap...");
-      console.log(buses.data);
       res.json(buses.data);
     })
     .catch(err => {

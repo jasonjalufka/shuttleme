@@ -25,10 +25,6 @@ router.get("/:universityID", (req, res) => {
         type: "FeatureCollection",
         features: []
       };
-      console.log(
-        "Fetching route data from doublemap, ex:",
-        routes.data[0].name
-      );
 
       routes.data.map(route => {
         geojson.features.push({
@@ -49,7 +45,6 @@ router.get("/:universityID", (req, res) => {
           }
         });
       });
-      console.log("route geojson from server: ", geojson);
       res.json(geojson);
     })
     .catch(err => {
