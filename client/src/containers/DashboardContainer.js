@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import produce from "immer";
-import TestDashboard from "../components/dashboard/TestDashboard";
+import Dashboard from "../components/dashboard/Dashboard";
 
 class DashboardContainer extends Component {
   state = {
@@ -32,7 +32,7 @@ class DashboardContainer extends Component {
 
   render() {
     return (
-      <TestDashboard
+      <Dashboard
         data={this.state.routes}
         onChange={this.fetchData.bind(this)}
       />

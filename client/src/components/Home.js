@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { HomeLayout } from "../styles/HomeStyles";
-import StopInfo from "../containers/StopInfo";
 import Girl from "./Girl";
 import Button from "../styles/Button";
 
@@ -27,7 +26,6 @@ class Home extends Component {
             </div>
           </div>
         </HomeLayout>
-        <StopInfo />
       </>
     );
   }
