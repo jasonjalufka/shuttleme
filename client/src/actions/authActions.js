@@ -64,6 +64,7 @@ export const register = ({ name, email, password }) => dispatch => {
 
 // Login User
 export const login = ({ email, password }) => dispatch => {
+  dispatch({ type: USER_LOADING });
   //Headers
   const config = {
     headers: {
