@@ -11,6 +11,7 @@ import {
   NavLink,
   Alert
 } from "reactstrap";
+import Loading from "../Loading";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../actions/authActions";
@@ -21,7 +22,8 @@ class LoginModal extends Component {
     modal: false,
     email: "",
     password: "",
-    msg: null
+    msg: null,
+    loading: false
   };
 
   static propTypes = {
@@ -113,8 +115,16 @@ class LoginModal extends Component {
                   onChange={this.onChange}
                 />
 
-                <Button color="dark" style={{ marginTop: "2rem" }} block>
-                  Login
+                <Button
+                  color="dark"
+                  style={{
+                    marginTop: "2rem",
+                    display: "flex",
+                    justifyContent: "center"
+                  }}
+                  block
+                >
+                  {this.props.isLoading ? <Loading /> : "Login"}
                 </Button>
               </FormGroup>
             </Form>
@@ -127,6 +137,7 @@ class LoginModal extends Component {
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
+  isLoading: state.auth.isLoading,
   error: state.error
 });
 

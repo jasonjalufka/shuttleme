@@ -52,7 +52,9 @@ class AppNavbar extends Component {
         </NavItem>
         <NavItem>
           <span className="navbar-text mr-3">
-            <strong>{user ? `${user.name}` : ""}</strong>
+            <strong style={{ marginLeft: "10px" }}>
+              {user ? `${user.name}` : ""}
+            </strong>
           </span>
         </NavItem>
       </>

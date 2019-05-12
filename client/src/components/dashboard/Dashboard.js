@@ -9,7 +9,10 @@ export const StyledDashboard = styled.div`
   margin: 20px;
   padding: 20px;
   height: 150px;
-  background-color: white;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 0.8em;
+  /* background-color: white; */
 
   .card {
     width: 265px;
@@ -28,8 +31,9 @@ export const StyledDashboard = styled.div`
   }
 
   .card-header {
+    font-family: "Varela Round", sans-serif;
     text-align: center;
-    font-weight: 600;
+    font-weight: 400;
     padding: 5px 10px;
   }
 
