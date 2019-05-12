@@ -10,8 +10,8 @@ import store from "./store";
 import { loadUser } from "./actions/authActions";
 import Home from "./components/Home";
 import MapContainer from "./containers/MapContainer";
-import DashboardContainer from "./containers/DashboardContainer";
 import { GlobalStyle } from "./styles";
+import SidebarContainer from "./containers/SidebarContainer";
 
 class App extends Component {
   componentDidMount() {
@@ -26,7 +26,7 @@ class App extends Component {
             <AppNavbar />
             <Route exact path="/" component={Home} />
             <Route exact path="/map" component={MapContainer} />
-            <Route exact path="/dashboard" component={DashboardContainer} />
+            <Route exact path="/dashboard" component={SidebarContainer} />
           </div>
         </Router>
       </Provider>
