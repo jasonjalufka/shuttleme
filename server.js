@@ -21,14 +21,16 @@ mongoose
   .catch(err => console.log(err));
 
 // Use Routes
-app.use("/api/users", require("./routes/api/users"));
-app.use("/api/auth", require("./routes/api/auth"));
-app.use("/api/doublemap/stops", require("./routes/api/doublemap/stops"));
-app.use("/api/doublemap/buses", require("./routes/api/doublemap/buses"));
-app.use("/api/geojson/route", require("./routes/api/geojson/route"));
-app.use("/api/geojson/stops", require("./routes/api/geojson/stops"));
-app.use("/api/geojson/buses", require("./routes/api/geojson/buses"));
-app.use("/api/dashboard", require("./routes/api/dashboard"));
+// app.use("/api/users", require("./routes/api/users"));
+// app.use("/api/auth", require("./routes/api/auth"));
+// app.use("/api/doublemap/stops", require("./routes/api/doublemap/stops"));
+// app.use("/api/doublemap/buses", require("./routes/api/doublemap/buses"));
+// app.use("/api/geojson/route", require("./routes/api/geojson/route"));
+// app.use("/api/geojson/stops", require("./routes/api/geojson/stops"));
+// app.use("/api/geojson/buses", require("./routes/api/geojson/buses"));
+// app.use("/api/dashboard", require("./routes/api/dashboard"));
+
+require("./routes/routes")(app);
 
 const port = process.env.PORT || 5000;
 
