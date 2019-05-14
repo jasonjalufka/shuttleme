@@ -1,16 +1,13 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-
-import { Provider } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/authActions";
 import Home from "./components/Home";
+import OverviewContainer from "./containers/OverviewContainer";
 import MapContainer from "./containers/MapContainer";
 import { GlobalStyle } from "./styles";
-import OverviewContainer from "./containers/OverviewContainer";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
 class App extends Component {
   componentDidMount() {
@@ -18,7 +15,7 @@ class App extends Component {
   }
   render() {
     return (
-      <Provider store={store}>
+      <>
         <GlobalStyle />
         <Router>
           <div className="App">
@@ -27,7 +24,7 @@ class App extends Component {
             <Route exact path="/dashboard" component={OverviewContainer} />
           </div>
         </Router>
-      </Provider>
+      </>
     );
   }
 }

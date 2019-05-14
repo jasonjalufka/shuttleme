@@ -1,12 +1,9 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
-const config = require("config");
 const jwt = require("jsonwebtoken");
-const auth = require("../middleware/auth");
 
 // register a new user
 exports.register = (req, res) => {
-  console.log("REGISTER: ", req.body);
   const { name, email, password } = req.body;
 
   // Simple validation

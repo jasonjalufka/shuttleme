@@ -4,7 +4,7 @@ import { GET_ROUTE_GEOJSON, GET_STOP_GEOJSON, GET_BUS_GEOJSON } from "./types";
 export const getRouteGeoJson = university => dispatch => {
   console.log("getting routegeojson...");
   axios
-    .get(`/api/geojson/route/${university}`)
+    .get(`/api/geojson/routes/${university}`)
     .then(res =>
       dispatch({
         type: GET_ROUTE_GEOJSON,
