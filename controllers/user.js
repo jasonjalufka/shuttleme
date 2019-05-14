@@ -6,6 +6,7 @@ const auth = require("../middleware/auth");
 
 // register a new user
 exports.register = (req, res) => {
+  console.log("REGISTER: ", req.body);
   const { name, email, password } = req.body;
 
   // Simple validation
@@ -32,7 +33,7 @@ exports.register = (req, res) => {
         newUser.save().then(user => {
           jwt.sign(
             { id: user.id },
-            config.get("jwtSecret"),
+            process.env.JWT_SECRET,
             {
               expiresIn: 3600
             },
