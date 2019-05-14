@@ -58,7 +58,9 @@ exports.getBuses = (req, res) => {
           properties: {
             id: bus.id,
             name: bus.name,
-            heading: bus
+            heading: bus.heading,
+            route: bus.route,
+            lastStop: bus.lastStop
           }
         });
       });
