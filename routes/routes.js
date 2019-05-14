@@ -13,8 +13,8 @@ module.exports = app => {
   app.route("/api/doublemap/buses");
   app.route("/api/doublemap/buses/:busId");
   app.route("/api/doublemap/stops");
-  app.route("/api/geojson/buses/:universityID").get(() => console.log("hi"));
+  app.route("/api/geojson/buses/:universityID").get(Geojson.getBuses);
   app.route("/api/geojson/routes/:universityID").get(Geojson.getRoutes);
-  app.route("/api/geojson/stops/:universityID").get(() => console.log("hi"));
+  app.route("/api/geojson/stops/:universityID").get(Geojson.getStops);
   app.route("/api/users").post(User.register);
 };
