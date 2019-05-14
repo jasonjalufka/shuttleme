@@ -88,7 +88,9 @@ class Sidebar extends Component {
       <SidebarContainer>
         <SidebarMenu>
           <MenuLogo>shuttle.me</MenuLogo>
-          <SidebarMenuItem>
+          <SidebarMenuItem
+            onClick={e => this.props.handleSidebarClick(e, "Dashboard")}
+          >
             <Icon viewBox="0 0 20 20">
               <path
                 width="20px"
@@ -99,7 +101,9 @@ class Sidebar extends Component {
             </Icon>
             <SidebarMenuItemLabel>Dashboard</SidebarMenuItemLabel>
           </SidebarMenuItem>
-          <SidebarMenuItem>
+          <SidebarMenuItem
+            onClick={e => this.props.handleSidebarClick(e, "Map")}
+          >
             <Icon viewBox="0 0 20 19">
               <path
                 width="20px"

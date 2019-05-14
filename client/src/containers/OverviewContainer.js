@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { selectUserPreferences } from "../selectors";
 import {
   getRouteGeoJson,
   getStopGeoJson,
@@ -55,14 +56,15 @@ class OverviewContainer extends Component {
   };
 
   // how to define function
-  handleClick = event => {
-    // do stuff
+  handleSidebarClick = event => {
+    console.log(event.target.value);
   };
+
   render() {
     return (
       <GridContainer>
         <GridSidebar>
-          <Sidebar />
+          <Sidebar handleSidebarClick={this.handleSidebarClick} />
         </GridSidebar>
         <Header>Dashboard - Texas State University</Header>
         <Content>
@@ -74,7 +76,8 @@ class OverviewContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  preferences: selectUserPreferences(state)
 });
 
 export default connect(
