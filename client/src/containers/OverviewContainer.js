@@ -9,6 +9,7 @@ import {
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
 import DashboardContainer from "./DashboardContainer";
+import MapContainer from "./MapContainer";
 
 const GridContainer = styled.div`
   display: grid;
@@ -52,15 +53,24 @@ const Content = styled.div`
 
 class OverviewContainer extends Component {
   state = {
-    content: "DashboardContainer"
+    content: ""
+  };
+
+  components = {
+    Dashboard: DashboardContainer,
+    Map: MapContainer
   };
 
   // how to define function
-  handleSidebarClick = event => {
-    console.log(event.target.value);
+  handleSidebarClick = (event, componentName) => {
+    this.setState({
+      ...this.state,
+      content: componentName
+    });
   };
 
   render() {
+    const View = this.components[this.state.content || "Dashboard"];
     return (
       <GridContainer>
         <GridSidebar>
@@ -68,7 +78,7 @@ class OverviewContainer extends Component {
         </GridSidebar>
         <Header>Dashboard - Texas State University</Header>
         <Content>
-          <DashboardContainer />
+          <View />
         </Content>
       </GridContainer>
     );
