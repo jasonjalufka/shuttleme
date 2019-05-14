@@ -38,6 +38,86 @@ exports.getRoutes = (req, res) => {
     });
 };
 
+exports.getBuses = (req, res) => {
+  let { universityID } = req.params;
+  axios
+    .get(`http://${universityID}.doublemap.com/map/v2/buses`)
+    .then(buses => {
+      let geojson = {
+        type: "FeatureCollection",
+        features: []
+      };
+
+      buses.data.map(bus => {
+        geojson.features.push({
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [bus.lon, bus.lat]
+          },
+          properties: {
+            id: bus.id,
+            name: bus.name,
+            heading: bus
+          }
+        });
+      });
+      res.json(geojson);
+    })
+    .catch(err => {
+      res.status(503).json({
+        msg: "Something went wrong while fetching bus data"
+      });
+    });
+};
+
+exports.getStops = (req, res) => {
+  let { universityID } = req.params;
+  let getStops = () => {
+    return axios.get(`http://${universityID}.doublemap.com/map/v2/stops`);
+  };
+
+  let getRoutes = () => {
+    return axios.get(`http://${universityID}.doublemap.com/map/v2/routes`);
+  };
+
+  axios
+    .all([getStops(), getRoutes()])
+    .then(
+      axios.spread((stops, routes) => {
+        let activeStops = getActiveStops(routes.data);
+
+        let geojson = {
+          type: "FeatureCollection",
+          features: []
+        };
+
+        stops.data
+          .filter(stop => activeStops.includes(stop.id))
+          .map(stop => {
+            geojson.features.push({
+              type: "Feature",
+              geometry: {
+                type: "Point",
+                coordinates: [stop.lon, stop.lat]
+              },
+              properties: {
+                id: stop.id,
+                name: stop.name,
+                buddy: stop.buddy
+              }
+            });
+          });
+        res.json(geojson);
+      })
+    )
+    .catch(err => {
+      res.status(503).json({
+        msg: "Something went wrong while fetching stop data"
+      });
+    });
+};
+
 let chunkArray = (arr, chunkSize) => {
   let index = 0,
     arrayLength = arr.length;
@@ -49,4 +129,15 @@ let chunkArray = (arr, chunkSize) => {
     tempArray.push(myChunk);
   }
   return tempArray;
+};
+
+const getActiveStops = routes => {
+  let jointArray = [];
+  routes.forEach(route => {
+    jointArray = [...jointArray, ...route.stops];
+  });
+  const uniqueArray = jointArray.filter(
+    (item, index) => jointArray.indexOf(item) === index
+  );
+  return uniqueArray;
 };
