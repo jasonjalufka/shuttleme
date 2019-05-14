@@ -77,7 +77,7 @@ const UniversitySchema = new Schema({
     enum: statesArray
   },
   zip: {
-    type: Number,
+    type: String,
     required: true
   },
   lat: {

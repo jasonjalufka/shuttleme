@@ -20,6 +20,10 @@ const UserSchema = new Schema({
     required: true
   },
   preferences: {
+    university: {
+      type: String,
+      default: null
+    },
     stop: {
       type: String,
       default: null
