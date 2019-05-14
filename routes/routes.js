@@ -1,7 +1,7 @@
 const University = require("../controllers/university");
 const User = require("../controllers/user");
 const Auth = require("../controllers/auth");
-const Doublemap = require("../controllers/doublemap");
+const Dashboard = require("../controllers/dashboard");
 const Geojson = require("../controllers/geojson");
 const auth = require("../middleware/auth");
 
@@ -14,7 +14,7 @@ module.exports = app => {
   // @desc   Get information of currently logged in user
   // @access Private
   app.route("/api/auth/user").get(auth, Auth.getUser);
-  app.route("/api/dashboard/:universityID");
+  app.route("/api/dashboard/:universityID").get(Dashboard.getDashboard);
   // @route  GET api/universities
   // @desc   Get all university data
   // @access Public
