@@ -1,12 +1,9 @@
-const express = require("express");
-const router = express.Router();
 const bcrypt = require("bcryptjs");
-const config = require("config");
 const jwt = require("jsonwebtoken");
-const auth = require("../middleware/auth");
 
 const User = require("../models/User");
 
+// Authenticate user credentials (email/password)
 exports.authenticate = (req, res) => {
   const { email, password } = req.body;
 
@@ -48,5 +45,8 @@ exports.authenticate = (req, res) => {
 exports.getUser = (req, res) => {
   User.findById(req.user.id)
     .select("-password")
-    .then(user => res.json(user));
+    .then(user => res.json(user))
+    .catch(err => {
+      console.log(err);
+    });
 };
