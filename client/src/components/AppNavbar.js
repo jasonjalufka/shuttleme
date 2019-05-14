@@ -80,8 +80,8 @@ class AppNavbar extends Component {
                 style={{
                   width: "50px",
                   height: "auto",
-                  "background-color": "#c5eff7",
-                  "border-radius": "20%",
+                  backgroundColor: "#c5eff7",
+                  borderRadius: "20%",
                   padding: "8px"
                 }}
                 alt="Logo"

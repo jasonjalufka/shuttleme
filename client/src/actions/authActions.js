@@ -33,6 +33,7 @@ export const loadUser = () => (dispatch, getState) => {
     });
 };
 
+// Register new user
 export const register = ({ name, email, password }) => dispatch => {
   // Headers
   const config = {
@@ -54,7 +55,7 @@ export const register = ({ name, email, password }) => dispatch => {
     )
     .catch(err => {
       dispatch(
-        returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
+        returnErrors(err.response.data, err.response.status, REGISTER_FAIL)
       );
       dispatch({
         type: REGISTER_FAIL

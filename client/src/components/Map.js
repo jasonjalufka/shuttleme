@@ -32,7 +32,7 @@ class Map extends Component {
     // this.updateStopData();
     const map = new mapboxgl.Map({
       container: this.mapContainer,
-      style: "mapbox://styles/mapbox/dark-v10?optimize=true",
+      style: "mapbox://styles/mapbox/streets-v11?optimize=true",
       center: [-97.91153, 29.890661],
       bearing: -45,
       zoom: 12
@@ -147,9 +147,10 @@ class Map extends Component {
   render() {
     const styles = {
       position: "absolute",
-      top: "60px",
+      // top: "60px",
       bottom: 0,
-      width: "100%"
+      width: "100%",
+      height: "100vh"
     };
 
     return (

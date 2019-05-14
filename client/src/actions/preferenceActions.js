@@ -23,6 +23,10 @@ export const getUserStop = () => (dispatch, getState) => {
     .then(res => dispatch({ type: GET_USER_STOP, payload: res.data }));
 };
 
+// export const getUserUniversity = () => (dispatch, getState) => {
+//   axios.get("/api/users/university")
+// }
+
 export const setStop = stopChoice => (dispatch, getState) => {
   axios.post("/api/users/stop", stopChoice, tokenConfig(getState)).then(res =>
     dispatch({

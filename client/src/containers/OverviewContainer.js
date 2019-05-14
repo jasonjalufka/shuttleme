@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import {
+  getRouteGeoJson,
+  getStopGeoJson,
+  getBusGeoJson
+} from "../actions/geojsonActions";
 import styled from "styled-components";
-import axios from "axios";
-import produce from "immer";
 import Sidebar from "../components/Sidebar";
-import media from "../styles/media";
 import DashboardContainer from "./DashboardContainer";
-import Loading from "../components/Loading";
 
 const GridContainer = styled.div`
   display: grid;
@@ -44,19 +46,25 @@ const Header = styled.div`
 const Content = styled.div`
   grid-area: main;
   background-color: darkgray;
+  overflow: scroll;
 `;
 
-class SidebarContainer extends Component {
+class OverviewContainer extends Component {
+  state = {
+    content: "DashboardContainer"
+  };
+
+  // how to define function
+  handleClick = event => {
+    // do stuff
+  };
   render() {
     return (
       <GridContainer>
         <GridSidebar>
           <Sidebar />
         </GridSidebar>
-        <Header>
-          Dashboard - Texas State University
-          <Loading />
-        </Header>
+        <Header>Dashboard - Texas State University</Header>
         <Content>
           <DashboardContainer />
         </Content>
@@ -65,4 +73,15 @@ class SidebarContainer extends Component {
   }
 }
 
-export default SidebarContainer;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  {
+    getRouteGeoJson,
+    getStopGeoJson,
+    getBusGeoJson
+  }
+)(OverviewContainer);

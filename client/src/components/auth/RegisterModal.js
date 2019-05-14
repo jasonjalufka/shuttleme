@@ -11,6 +11,7 @@ import {
   NavLink,
   Alert
 } from "reactstrap";
+import Loading from "../Loading";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { register } from "../../actions/authActions";
@@ -127,7 +128,7 @@ class RegisterModal extends Component {
                 />
 
                 <Button color="dark" style={{ marginTop: "2rem" }} block>
-                  Register
+                  {this.props.isLoading ? <Loading /> : "Register"}
                 </Button>
               </FormGroup>
             </Form>
@@ -140,6 +141,7 @@ class RegisterModal extends Component {
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
+  isLoading: state.auth.isLoading,
   error: state.error
 });
 

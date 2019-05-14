@@ -16,44 +16,7 @@ class MapContainer extends Component {
       selectedUniversity: "txstate",
       selectedStop: "",
       selectedRoute: "",
-      universityList: [
-        {
-          name: "Texas State University",
-          id: "txstate"
-        },
-        {
-          name: "University of Texas - El Paso",
-          id: "utep"
-        },
-        {
-          name: "University of Cincinatti",
-          id: "uc"
-        },
-        {
-          name: "University of Ohio",
-          id: "aptcats"
-        },
-        {
-          name: "Indiana University Bloomington",
-          id: "bloomington"
-        },
-        {
-          name: "University of Illinois at Chicago",
-          id: "uic"
-        },
-        {
-          name: "University of Pennsylvania",
-          id: "pennrides"
-        },
-        {
-          name: "University of Akron",
-          id: "akron"
-        },
-        {
-          name: "Pepperdine University",
-          id: "pepperdine"
-        }
-      ]
+      universityList: ""
     };
     this.handleSelectUniversity = this.handleSelectUniversity.bind(this);
   }

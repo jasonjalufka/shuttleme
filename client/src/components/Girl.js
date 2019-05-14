@@ -70,15 +70,15 @@ const MapIcon = props => {
             points="573.35 138 573.47 347.5 660.47 347.5 660.47 261.5 809.47 261.5 826.97 239.06"
             fill="none"
             stroke="#444053"
-            stroke-miterlimit="10"
-            stroke-width="3"
+            strokeMiterlimit="10"
+            strokeWidth="3"
           />
           <polyline
             points="88.97 204.5 412.47 204.5 432.47 195.5 440.47 195.5 440.47 397.5 580.47 397.5 586.47 415.5 586.47 506.5 694.47 506.5 694.47 619"
             fill="none"
             stroke="#444053"
-            stroke-miterlimit="10"
-            stroke-width="3"
+            strokeMiterlimit="10"
+            strokeWidth="3"
           />
           <line
             x1="483.2"
@@ -87,8 +87,8 @@ const MapIcon = props => {
             y2="397.5"
             fill="none"
             stroke="#444053"
-            stroke-miterlimit="10"
-            stroke-width="3"
+            strokeMiterlimit="10"
+            strokeWidth="3"
           />
           <line
             x1="826.97"
@@ -97,8 +97,8 @@ const MapIcon = props => {
             y2="559.66"
             fill="none"
             stroke="#444053"
-            stroke-miterlimit="10"
-            stroke-width="3"
+            strokeMiterlimit="10"
+            strokeWidth="3"
           />
           <line
             x1="740.87"
@@ -107,8 +107,8 @@ const MapIcon = props => {
             y2="619"
             fill="none"
             stroke="#444053"
-            stroke-miterlimit="10"
-            stroke-width="3"
+            strokeMiterlimit="10"
+            strokeWidth="3"
           />
           <line
             x1="87.97"
@@ -117,8 +117,8 @@ const MapIcon = props => {
             y2="517.14"
             fill="none"
             stroke="#444053"
-            stroke-miterlimit="10"
-            stroke-width="3"
+            strokeMiterlimit="10"
+            strokeWidth="3"
           />
           <line
             x1="177.91"
@@ -127,8 +127,8 @@ const MapIcon = props => {
             y2="138"
             fill="none"
             stroke="#444053"
-            stroke-miterlimit="10"
-            stroke-width="3"
+            strokeMiterlimit="10"
+            strokeWidth="3"
           />
           <line
             x1="349.69"
@@ -137,8 +137,8 @@ const MapIcon = props => {
             y2="619"
             fill="none"
             stroke="#444053"
-            stroke-miterlimit="10"
-            stroke-width="3"
+            strokeMiterlimit="10"
+            strokeWidth="3"
           />
           <line
             x1="88.97"
@@ -147,8 +147,8 @@ const MapIcon = props => {
             y2="261.5"
             fill="none"
             stroke="#444053"
-            stroke-miterlimit="10"
-            stroke-width="3"
+            strokeMiterlimit="10"
+            strokeWidth="3"
           />
           <line
             x1="255.3"
@@ -157,15 +157,15 @@ const MapIcon = props => {
             y2="619"
             fill="none"
             stroke="#444053"
-            stroke-miterlimit="10"
-            stroke-width="3"
+            strokeMiterlimit="10"
+            strokeWidth="3"
           />
           <polyline
             points="87.97 370.82 349.69 370.82 483.2 517.14"
             fill="none"
             stroke="#444053"
-            stroke-miterlimit="10"
-            stroke-width="3"
+            strokeMiterlimit="10"
+            strokeWidth="3"
           />
           <line
             x1="512.12"
@@ -174,8 +174,8 @@ const MapIcon = props => {
             y2="397.5"
             fill="none"
             stroke="#444053"
-            stroke-miterlimit="10"
-            stroke-width="3"
+            strokeMiterlimit="10"
+            strokeWidth="3"
           />
           <line
             x1="483.2"
@@ -184,8 +184,8 @@ const MapIcon = props => {
             y2="443.98"
             fill="none"
             stroke="#444053"
-            stroke-miterlimit="10"
-            stroke-width="3"
+            strokeMiterlimit="10"
+            strokeWidth="3"
           />
         </g>
         <polygon

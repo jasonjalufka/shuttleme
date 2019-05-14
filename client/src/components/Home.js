@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { HomeLayout } from "../styles/HomeStyles";
 import Girl from "./Girl";
 import Button from "../styles/Button";
+import AppNavbar from "../components/AppNavbar";
 
 class Home extends Component {
   render() {
     return (
       <>
+        <AppNavbar />
         <HomeLayout>
           <div className="container">
             <div className="row">
