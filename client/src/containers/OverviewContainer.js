@@ -69,12 +69,9 @@ class OverviewContainer extends Component {
   };
 
   handleSelectUniversity = event => {
-    event.preventDefault();
-    console.log("option selected", event.target.value);
     let university = this.props.universities.filter(
       uni => event.target.value === uni.code
     );
-    console.log("university to update state", university[0]);
     this.setState({
       ...this.state,
       selectedUniversity: university[0]
@@ -99,18 +96,20 @@ class OverviewContainer extends Component {
         <Header>
           Dashboard -{" "}
           {this.props.universities && (
-            <select
-              value={this.state.selectedUniversity.name}
-              onChange={this.handleSelectUniversity}
-            >
-              {this.props.universities.map(uni => {
-                return (
-                  <option value={uni.code} key={uni._id}>
-                    {uni.name}
-                  </option>
-                );
-              })}
-            </select>
+            <form>
+              <select
+                value={this.state.selectedUniversity.code}
+                onChange={this.handleSelectUniversity}
+              >
+                {this.props.universities.map(uni => {
+                  return (
+                    <option value={uni.code} key={uni._id}>
+                      {uni.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </form>
           )}
         </Header>
         <Content>
