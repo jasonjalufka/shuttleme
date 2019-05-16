@@ -5,18 +5,6 @@ mapboxgl.accessToken =
   "pk.eyJ1IjoiamFzb25qYWx1ZmthIiwiYSI6ImNqdWo3M3R1czFpaGs0ZW8ydHo0M2JtZzcifQ.nzhNlFoI6SKDqMFC6HyKlA";
 
 class Map extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     routeData: "",
-  //     stopData: "",
-  //     hoveredRouteId: ""
-  //   };
-
-  // this.updateRouteData = this.updateRouteData.bind(this);
-  // this.updateStopData = this.updateStopData.bind(this);
-  // }
-
   componentDidUpdate(prevProps) {
     if (this.props.buses !== prevProps.buses && this.map) {
       this.updateBusLayer();
@@ -32,7 +20,7 @@ class Map extends Component {
     // this.updateStopData();
     const map = new mapboxgl.Map({
       container: this.mapContainer,
-      style: "mapbox://styles/mapbox/streets-v11?optimize=true",
+      style: "mapbox://styles/mapbox/dark-v10?optimize=true",
       // center: [-97.91153, 29.890661],
       center: [
         parseFloat(this.props.university.lon),
