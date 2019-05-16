@@ -141,6 +141,14 @@ const distance = (lat1, lon1, lat2, lon2) => {
 
 const getStopCoordinates = (stopId, stops) => {
   let stop = stops.find(stop => stop.id == stopId);
+  if (!stop) {
+    stop = stops.find(
+      stop =>
+        `10000${stop.id}` == stopId ||
+        `20000${stop.id}` == stopId ||
+        `2000${stop.id}` == stopId
+    );
+  }
   console.log("Inside getStopCoordinates(): stop=", stop);
   if (!stop.lat || !stop.lon) {
     return { lat: 0, lon: 0 };
