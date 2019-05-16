@@ -11,23 +11,29 @@ class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      height: 0,
-      width: 0,
       selectedUniversity: "txstate",
       selectedStop: "",
-      selectedRoute: "",
-      universityList: ""
+      selectedRoute: ""
     };
     this.handleSelectUniversity = this.handleSelectUniversity.bind(this);
   }
 
   componentDidMount() {
-    this.props.getRouteGeoJson(this.state.selectedUniversity);
-    this.props.getStopGeoJson(this.state.selectedUniversity);
-    this.props.getBusGeoJson(this.state.selectedUniversity);
-    this.interval = setInterval(() => {
+    if (this.props.university) {
+      this.props.getRouteGeoJson(this.props.university.code);
+      this.props.getStopGeoJson(this.props.university.code);
+      this.props.getBusGeoJson(this.props.university.code);
+      this.interval = setInterval(() => {
+        this.props.getBusGeoJson(this.props.university.code);
+      }, 5000);
+    } else {
+      this.props.getRouteGeoJson(this.state.selectedUniversity);
+      this.props.getStopGeoJson(this.state.selectedUniversity);
       this.props.getBusGeoJson(this.state.selectedUniversity);
-    }, 5000);
+      this.interval = setInterval(() => {
+        this.props.getBusGeoJson(this.state.selectedUniversity);
+      }, 5000);
+    }
   }
 
   componentWillUnmount() {
@@ -35,14 +41,12 @@ class MapContainer extends Component {
   }
 
   handleSelectUniversity = event => {
-    console.log(event.target.value);
     this.props.getRouteGeoJson(event.target.value);
-    this.props.getStopGeoJson(this.state.selectedUniversity);
+    this.props.getStopGeoJson(this.props.university.code);
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log("Submit pressed");
     const newStop = {
       stop: this.state.selectedStop
     };
@@ -57,6 +61,7 @@ class MapContainer extends Component {
             routes={this.props.routegeojson}
             stops={this.props.stopgeojson}
             buses={this.props.busgeojson}
+            university={this.props.university}
           />
         </>
       )

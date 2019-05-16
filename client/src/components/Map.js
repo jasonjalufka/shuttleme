@@ -33,7 +33,11 @@ class Map extends Component {
     const map = new mapboxgl.Map({
       container: this.mapContainer,
       style: "mapbox://styles/mapbox/streets-v11?optimize=true",
-      center: [-97.91153, 29.890661],
+      // center: [-97.91153, 29.890661],
+      center: [
+        parseFloat(this.props.university.lon),
+        parseFloat(this.props.university.lat)
+      ],
       bearing: -45,
       zoom: 12
     });
@@ -121,24 +125,6 @@ class Map extends Component {
       map.getCanvas().style.cursor = "";
     });
   }
-
-  // updateRouteData = () => {
-  //   axios.get("/api/geojson/route/txstate").then(res => {
-  //     this.setState({
-  //       ...this.state,
-  //       routeData: res.data
-  //     });
-  //   });
-  // };
-
-  // updateStopData = () => {
-  //   axios.get("/api/geojson/stops/txstate").then(res => {
-  //     this.setState({
-  //       ...this.state,
-  //       stopData: res.data
-  //     });
-  //   });
-  // };
 
   componentWillUnmount() {
     this.map.remove();
