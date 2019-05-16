@@ -34,6 +34,7 @@ const GridContainer = styled.div`
 
 const GridSidebar = styled.div`
   grid-area: sidebar;
+  background-color: #23222d;
 `;
 
 const Header = styled.div`
@@ -41,19 +42,20 @@ const Header = styled.div`
   align-self: center;
   padding-left: 40px;
   padding-top: 20px;
-  background-color: rgba(41, 47, 54, 1);
+  background-color: #2e3442;
   color: white;
   height: 100%;
 `;
 
 const Content = styled.div`
   grid-area: main;
-  background-color: darkgray;
+  background-color: #2e3442;
   overflow: scroll;
 
   h1 {
     text-align: center;
     margin-top: 3em;
+    color: white;
   }
 `;
 

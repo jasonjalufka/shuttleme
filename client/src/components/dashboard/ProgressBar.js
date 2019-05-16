@@ -9,6 +9,7 @@ const Bar = styled.div`
   width: 250px;
   margin-top: 5px;
   margin-bottom: 5px;
+  height: 3px;
   /* border: 1px solid grey; */
 `;
 
@@ -19,6 +20,11 @@ const Filler = styled.div`
   border-radius: 20px 0 0 20px;
   width: ${props => props.width};
   background: ${props => props.color};
+  background-image: linear-gradient(
+    to right,
+    rgba(123, 239, 178, 1),
+    rgba(46, 204, 113, 1)
+  );
   transition: width 0.5s ease-in;
 `;
 
@@ -35,7 +41,7 @@ const ProgressBar = props => {
   let theWidth = `${props.percentage * 2.5}px`;
   return (
     <>
-      <Stops>
+      {/* <Stops>
         {props.stops.map((stop, index) => {
           return (
             <Stop key={index} lastStop={props.lastStop} stop={stop}>
@@ -43,7 +49,7 @@ const ProgressBar = props => {
             </Stop>
           );
         })}
-      </Stops>
+      </Stops> */}
       <Bar>
         <Filler
           percentage={props.percentage}

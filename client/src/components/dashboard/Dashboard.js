@@ -16,13 +16,17 @@ export const StyledDashboard = styled.div`
 
   .card {
     width: 265px;
-    background-color: white;
+    background-color: inherit;
+    color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+    padding-bottom: 20px;
+    padding: 10px;
+    border-color: aliceblue;
 
     :hover {
       box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);
@@ -32,9 +36,12 @@ export const StyledDashboard = styled.div`
 
   .card-header {
     font-family: "Varela Round", sans-serif;
+    font-size: 1rem;
     text-align: center;
     font-weight: 400;
     padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom: none;
   }
 
   .card-main {
@@ -43,6 +50,7 @@ export const StyledDashboard = styled.div`
     justify-content: center;
     align-items: center;
     padding: 5px;
+    margin-bottom: 5px;
 
     & span {
       align-self: flex-start;
