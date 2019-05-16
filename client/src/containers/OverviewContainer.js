@@ -50,6 +50,11 @@ const Content = styled.div`
   grid-area: main;
   background-color: darkgray;
   overflow: scroll;
+
+  h1 {
+    text-align: center;
+    margin-top: 3em;
+  }
 `;
 
 class OverviewContainer extends Component {
@@ -96,20 +101,18 @@ class OverviewContainer extends Component {
         <Header>
           Dashboard -{" "}
           {this.props.universities && (
-            <form>
-              <select
-                value={this.state.selectedUniversity.code}
-                onChange={this.handleSelectUniversity}
-              >
-                {this.props.universities.map(uni => {
-                  return (
-                    <option value={uni.code} key={uni._id}>
-                      {uni.name}
-                    </option>
-                  );
-                })}
-              </select>
-            </form>
+            <select
+              value={this.state.selectedUniversity.code}
+              onChange={this.handleSelectUniversity}
+            >
+              {this.props.universities.map(uni => {
+                return (
+                  <option value={uni.code} key={uni._id}>
+                    {uni.name}
+                  </option>
+                );
+              })}
+            </select>
           )}
         </Header>
         <Content>
