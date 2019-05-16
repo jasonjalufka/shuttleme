@@ -17,9 +17,6 @@ exports.getDashboard = (req, res) => {
 
   axios.all([getStops(), getRoutes(), getBuses()]).then(
     axios.spread((stops, routes, buses) => {
-      console.log("Stops: ", stops.data);
-      console.log("Routes: ", routes.data);
-      console.log("Buses: ", buses.data);
       if (
         !(
           buses.data.length === 0 ||
@@ -75,6 +72,7 @@ const formatData = (routes, stops, buses) => {
 };
 
 const calculatePercentage = (lat, lon, path, lastStop) => {
+  console.log("Inside calculatePercentage(), lat=", lat, "lon=", lon);
   let stopIndex = findIndexInPath(lastStop.lat, lastStop.lon, path);
   let busIndex = findIndexInPath(lat, lon, path.slice(stopIndex));
   let percentage = ((busIndex + stopIndex) / path.length) * 100;
@@ -143,6 +141,7 @@ const distance = (lat1, lon1, lat2, lon2) => {
 
 const getStopCoordinates = (stopId, stops) => {
   let stop = stops.find(stop => stop.id == stopId);
+  console.log("Inside getStopCoordinates(): stop=", stop);
   if (!stop.lat || !stop.lon) {
     return { lat: 0, lon: 0 };
   }
