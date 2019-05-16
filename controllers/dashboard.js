@@ -74,7 +74,6 @@ const formatData = (routes, stops, buses) => {
 const calculatePercentage = (lat, lon, path, lastStop) => {
   let stopIndex = findIndexInPath(lastStop.lat, lastStop.lon, path);
   let busIndex = findIndexInPath(lat, lon, path.slice(stopIndex));
-
   let percentage = ((busIndex + stopIndex) / path.length) * 100;
   return percentage.toFixed();
 };
@@ -105,6 +104,9 @@ const findIndexInPath = (lat, lon, path) => {
   return index;
 };
 
+// Splits path array into pairs (chunks) of size chunk_size
+// ex: myArray = [1, 2, 3, 4, 5, 6]
+// chunkArray(myArray, 2) returns [[1, 2], [3, 4], [5, 6]]
 const chunkArray = (myArray, chunk_size) => {
   var index = 0;
   var arrayLength = myArray.length;
@@ -117,6 +119,8 @@ const chunkArray = (myArray, chunk_size) => {
   return tempArray;
 };
 
+// Calculates the nautical miles between two lat/lon pairs
+// using Haversine formula
 const distance = (lat1, lon1, lat2, lon2) => {
   var radlat1 = (Math.PI * lat1) / 180;
   var radlat2 = (Math.PI * lat2) / 180;

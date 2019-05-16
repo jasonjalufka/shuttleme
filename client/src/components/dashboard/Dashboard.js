@@ -53,30 +53,34 @@ export const StyledDashboard = styled.div`
 const Dashboard = props => {
   return (
     <StyledDashboard>
-      {props.data
-        .filter(route => route.buses.length > 0)
-        .map(route => {
-          return (
-            <div className="card">
-              <div className="card-header">{route.name}</div>
-              {route.buses
-                .sort((a, b) => a.id - b.id)
-                .map(bus => {
-                  return (
-                    <div className="card-main">
-                      <span>Bus {bus.id}</span>
-                      <ProgressBar
-                        percentage={bus.percentage}
-                        color={route.color}
-                        stops={route.stops}
-                        lastStop={bus.lastStop}
-                      />
-                    </div>
-                  );
-                })}
-            </div>
-          );
-        })}
+      {props.data ? (
+        props.data
+          .filter(route => route.buses.length > 0)
+          .map(route => {
+            return (
+              <div className="card">
+                <div className="card-header">{route.name}</div>
+                {route.buses
+                  .sort((a, b) => a.id - b.id)
+                  .map(bus => {
+                    return (
+                      <div className="card-main">
+                        <span>Bus {bus.id}</span>
+                        <ProgressBar
+                          percentage={bus.percentage}
+                          color={route.color}
+                          stops={route.stops}
+                          lastStop={bus.lastStop}
+                        />
+                      </div>
+                    );
+                  })}
+              </div>
+            );
+          })
+      ) : (
+        <h1>No buses currently running</h1>
+      )}
     </StyledDashboard>
   );
 };

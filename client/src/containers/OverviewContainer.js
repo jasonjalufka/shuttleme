@@ -6,6 +6,7 @@ import {
   getStopGeoJson,
   getBusGeoJson
 } from "../actions/geojsonActions";
+import { getUniversityList } from "../actions/dashboardActions";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
 import DashboardContainer from "./DashboardContainer";
@@ -53,12 +54,31 @@ const Content = styled.div`
 
 class OverviewContainer extends Component {
   state = {
-    content: ""
+    content: "",
+    selectedUniversity: ""
   };
+
+  componentDidMount() {
+    console.log("Overview container did mount");
+    this.props.getUniversityList();
+  }
 
   components = {
     Dashboard: DashboardContainer,
     Map: MapContainer
+  };
+
+  handleSelectUniversity = event => {
+    event.preventDefault();
+    console.log("option selected", event.target.value);
+    let university = this.props.universities.filter(
+      uni => event.target.value === uni.code
+    );
+    console.log("university to update state", university[0]);
+    this.setState({
+      ...this.state,
+      selectedUniversity: university[0]
+    });
   };
 
   // how to define function
@@ -76,9 +96,29 @@ class OverviewContainer extends Component {
         <GridSidebar>
           <Sidebar handleSidebarClick={this.handleSidebarClick} />
         </GridSidebar>
-        <Header>Dashboard - Texas State University</Header>
+        <Header>
+          Dashboard -{" "}
+          {this.props.universities && (
+            <select
+              value={this.state.selectedUniversity.name}
+              onChange={this.handleSelectUniversity}
+            >
+              {this.props.universities.map(uni => {
+                return (
+                  <option value={uni.code} key={uni._id}>
+                    {uni.name}
+                  </option>
+                );
+              })}
+            </select>
+          )}
+        </Header>
         <Content>
-          <View />
+          {this.state.selectedUniversity === "" ? (
+            <h1>Select a University</h1>
+          ) : (
+            <View university={this.state.selectedUniversity} />
+          )}
         </Content>
       </GridContainer>
     );
@@ -87,6 +127,7 @@ class OverviewContainer extends Component {
 
 const mapStateToProps = state => ({
   auth: state.auth,
+  universities: state.dashboard.universities,
   preferences: selectUserPreferences(state)
 });
 
@@ -95,6 +136,7 @@ export default connect(
   {
     getRouteGeoJson,
     getStopGeoJson,
-    getBusGeoJson
+    getBusGeoJson,
+    getUniversityList
   }
 )(OverviewContainer);
