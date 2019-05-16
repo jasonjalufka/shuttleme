@@ -143,6 +143,9 @@ const distance = (lat1, lon1, lat2, lon2) => {
 
 const getStopCoordinates = (stopId, stops) => {
   let stop = stops.find(stop => stop.id == stopId);
+  if (!stop.lat || !stop.lon) {
+    return { lat: 0, lon: 0 };
+  }
   return { lat: stop.lat, lon: stop.lon };
 };
 
