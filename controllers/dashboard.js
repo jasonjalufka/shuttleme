@@ -17,6 +17,9 @@ exports.getDashboard = (req, res) => {
 
   axios.all([getStops(), getRoutes(), getBuses()]).then(
     axios.spread((stops, routes, buses) => {
+      console.log(stops.data.length);
+      console.log(routes.data.length);
+      console.log(buses.data.length);
       if (
         !(
           buses.data.length === 0 ||
@@ -27,7 +30,7 @@ exports.getDashboard = (req, res) => {
         response = formatData(routes.data, stops.data, buses.data);
         res.json(response);
       } else {
-        res.json({ routes: "" });
+        res.json({ routes: [] });
       }
     })
   );
