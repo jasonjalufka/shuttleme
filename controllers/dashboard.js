@@ -72,7 +72,6 @@ const formatData = (routes, stops, buses) => {
 };
 
 const calculatePercentage = (lat, lon, path, lastStop) => {
-  console.log("Inside calculatePercentage(), lat=", lat, "lon=", lon);
   let stopIndex = findIndexInPath(lastStop.lat, lastStop.lon, path);
   let busIndex = findIndexInPath(lat, lon, path.slice(stopIndex));
   let percentage = ((busIndex + stopIndex) / path.length) * 100;
@@ -149,7 +148,6 @@ const getStopCoordinates = (stopId, stops) => {
         `2000${stop.id}` == stopId
     );
   }
-  console.log("Inside getStopCoordinates(): stop=", stop);
   if (!stop.lat || !stop.lon) {
     return { lat: 0, lon: 0 };
   }
