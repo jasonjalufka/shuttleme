@@ -1,6 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
+const DotsWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const Dots = styled.div`
   padding: 5px;
   width: 3.5em;
@@ -37,11 +44,13 @@ const Dots = styled.div`
 
 const Loading = () => {
   return (
-    <Dots>
-      <div />
-      <div />
-      <div />
-    </Dots>
+    <DotsWrapper>
+      <Dots>
+        <div />
+        <div />
+        <div />
+      </Dots>
+    </DotsWrapper>
   );
 };
 
