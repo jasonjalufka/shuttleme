@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 import produce from "immer";
 import Dashboard from "../components/dashboard/Dashboard";
+import Loading from "../components/Loading";
+import styled from "styled-components";
 
 class DashboardContainer extends Component {
   state = {
-    routes: []
+    routes: [],
+    isLoading: false
   };
 
   componentDidMount() {
@@ -20,7 +23,11 @@ class DashboardContainer extends Component {
     console.log("Previous Props: ", prevProps);
     console.log("NewProps: ", this.props);
     if (this.props.university.code !== prevProps.university.code) {
-      console.log("shit changed fam");
+      this.setState(
+        produce(draft => {
+          draft.isLoading = true;
+        })
+      );
     }
   }
 
@@ -34,6 +41,7 @@ class DashboardContainer extends Component {
         this.setState(
           produce(draft => {
             draft.routes = res.data.routes;
+            draft.isLoading = false;
           })
         );
       });
@@ -43,7 +51,9 @@ class DashboardContainer extends Component {
   };
 
   render() {
-    return (
+    return this.state.isLoading ? (
+      <Loading />
+    ) : (
       <Dashboard
         data={this.state.routes}
         onChange={this.fetchData.bind(this)}

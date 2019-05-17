@@ -61,7 +61,7 @@ export const StyledDashboard = styled.div`
 const Dashboard = props => {
   return (
     <StyledDashboard>
-      {props.data ? (
+      {props.data.filter(route => route.buses.length > 0).length > 0 ? (
         props.data
           .filter(route => route.buses.length > 0)
           .map(route => {

@@ -22,6 +22,7 @@ const GridContainer = styled.div`
     "sidebar main main main"
     "sidebar main main main";
   height: 100vh;
+  background-color: #2e3442;
 
   @media (max-width: 414px) {
     grid-template-columns: 1fr;
@@ -42,7 +43,8 @@ const Header = styled.div`
   align-self: center;
   padding-left: 40px;
   padding-top: 20px;
-  background-color: #2e3442;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
   color: white;
   height: 100%;
 `;
@@ -66,7 +68,6 @@ class OverviewContainer extends Component {
   };
 
   componentDidMount() {
-    console.log("Overview container did mount");
     this.props.getUniversityList();
   }
 
