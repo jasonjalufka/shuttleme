@@ -45,4 +45,4 @@ config
 coverage
 .vscode
 npm-debug.log
-/*.env
+.env

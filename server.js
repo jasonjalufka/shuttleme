@@ -1,15 +1,17 @@
 const express = require("express");
+require("dotenv").config();
 const mongoose = require("mongoose");
-const config = require("config");
+// const config = require("config");
 const path = require("path");
-
 const app = express();
 
 // BodyParser Middleware
 app.use(express.json());
 
 // DB Config
-const db = process.env.DATABASE_URL || config.get("mongoURI");
+const db = process.env.DATABASE_URL;
+
+console.log(process.env.DATABASE_URL);
 
 // Connect to MongoDB
 mongoose

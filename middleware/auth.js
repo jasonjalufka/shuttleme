@@ -1,7 +1,6 @@
-const config = require("config");
 const jwt = require("jsonwebtoken");
 
-function auth(req, res, next) {
+const auth = (req, res, next) => {
   // Get token sent from frontend
   const token = req.header("x-auth-token");
 
@@ -14,11 +13,10 @@ function auth(req, res, next) {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     // Add user from payload
     req.user = decoded;
-    console.log("req.user: " + JSON.stringify(req.user));
     next();
   } catch (e) {
     res.status(400).json({ msg: "Token is not valid" });
   }
-}
+};
 
 module.exports = auth;
