@@ -1,7 +1,8 @@
 const University = require("../models/University");
 
+// Return list of universities sorted alphabetically
 exports.get = (req, res) => {
-  University.find()
+  University.find({}, null, { sort: { name: 1 } })
     .then(university => {
       res.json(university);
     })
