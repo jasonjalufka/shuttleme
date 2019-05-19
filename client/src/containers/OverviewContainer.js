@@ -7,7 +7,8 @@ import {
   getBusGeoJson
 } from "../actions/geojsonActions";
 import { getUniversityList } from "../actions/dashboardActions";
-import styled from "styled-components";
+import { logout } from "../actions/authActions";
+import styled from "styled-components/macro";
 import Sidebar from "../components/Sidebar";
 import DashboardContainer from "./DashboardContainer";
 import MapContainer from "./MapContainer";
@@ -99,7 +100,10 @@ class OverviewContainer extends Component {
     return (
       <GridContainer>
         <GridSidebar>
-          <Sidebar handleSidebarClick={this.handleSidebarClick} />
+          <Sidebar
+            handleLogout={this.props.logout}
+            handleSidebarClick={this.handleSidebarClick}
+          />
         </GridSidebar>
         <Header>
           Dashboard -{" "}
@@ -142,6 +146,7 @@ export default connect(
     getRouteGeoJson,
     getStopGeoJson,
     getBusGeoJson,
-    getUniversityList
+    getUniversityList,
+    logout
   }
 )(OverviewContainer);

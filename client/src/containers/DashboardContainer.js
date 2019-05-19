@@ -3,7 +3,6 @@ import axios from "axios";
 import produce from "immer";
 import Dashboard from "../components/dashboard/Dashboard";
 import Loading from "../components/Loading";
-import styled from "styled-components";
 
 class DashboardContainer extends Component {
   state = {
@@ -20,8 +19,6 @@ class DashboardContainer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log("Previous Props: ", prevProps);
-    console.log("NewProps: ", this.props);
     if (this.props.university.code !== prevProps.university.code) {
       this.setState(
         produce(draft => {

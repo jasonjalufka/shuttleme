@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import { Link } from "react-router-dom";
+import styled from "styled-components/macro";
 
 const SidebarContainer = styled.div`
   height: 100vh;
@@ -42,6 +43,7 @@ const SidebarMenuItem = styled.li`
   width: 100%;
   align-items: center;
   padding-left: 30px;
+
   &:hover {
     background: rgba(255, 255, 255, 0.05);
     box-shadow: inset 3px 0 0 0 #ffffff;
@@ -52,6 +54,11 @@ const SidebarMenuItem = styled.li`
 const Icon = styled.svg`
   width: 20px;
   height: 20px;
+  @media (max-width: 720px) {
+    width: 0px;
+    height: 0px;
+    display: none;
+  }
 `;
 
 const SidebarMenuItemLabel = styled.p`
@@ -65,6 +72,9 @@ const SidebarMenuItemLabel = styled.p`
   margin-left: 20px;
   margin-bottom: 0;
   color: #ffffff;
+  @media (max-width: 720px) {
+    margin-left: 0;
+  }
 `;
 
 const MenuSignOut = styled.div`
@@ -82,12 +92,27 @@ const MenuSignOut = styled.div`
   }
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: white;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+`;
+
 class Sidebar extends Component {
   render() {
     return (
       <SidebarContainer>
         <SidebarMenu>
-          <MenuLogo>shuttle.me</MenuLogo>
+          <MenuLogo>
+            <StyledLink to="/">shuttle.me</StyledLink>
+          </MenuLogo>
           <SidebarMenuItem
             onClick={e => this.props.handleSidebarClick(e, "Dashboard")}
           >
@@ -139,7 +164,11 @@ class Sidebar extends Component {
             </Icon>
             <SidebarMenuItemLabel>Service Alerts</SidebarMenuItemLabel>
           </SidebarMenuItem>
-          <MenuSignOut>Sign Out</MenuSignOut>
+          <MenuSignOut>
+            <StyledLink onClick={this.props.handleLogout} to="/">
+              Sign Out
+            </StyledLink>
+          </MenuSignOut>
         </SidebarMenu>
       </SidebarContainer>
     );
