@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { selectUserPreferences } from "../selectors";
 import {
   getRouteGeoJson,
   getStopGeoJson,
@@ -136,8 +135,7 @@ class OverviewContainer extends Component {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  universities: state.dashboard.universities,
-  preferences: selectUserPreferences(state)
+  universities: state.dashboard.universities
 });
 
 export default connect(
